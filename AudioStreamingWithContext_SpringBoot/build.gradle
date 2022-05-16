@@ -29,6 +29,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+//jar{
+//	enabled = true
+//}
+plugins{
+	id "org.springframework.boot" version "0.0.1-SNAPSHOT"
+}
+
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
