@@ -11,6 +11,10 @@ public class IndexController {
 		return "Greetings from Audio Streaming with Context!";
 	}
 	
+	@GetMapping("/")
+	public String defaultPage() {
+		return "Greetings Norayr, Astghik, Liana, Nina , Tatev, Shavarsh from Audio Streaming with Context";
+	}
 	
 	
 }
