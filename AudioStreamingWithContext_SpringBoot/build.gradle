@@ -20,6 +20,58 @@ repositories {
 	mavenCentral()
 }
 
+
+node {
+    // Whether to download and install a specific Node.js version or not
+    // If false, it will use the globally installed Node.js
+    // If true, it will download node using above parameters
+    // Note that npm is bundled with Node.js
+    download = true
+    
+    // Version of node to download and install (only used if download is true)
+    // It will be unpacked in the workDir
+    version = "16.14.0"
+    
+    // The directory where Node.js is unpacked (when download is true) 
+    workDir = file("${project.projectDir}/src/main/front-end/nodejs")
+    
+    // The directory where npm is installed (when a specific version is defined)
+    npmWorkDir = file("${project.projectDir}/src/main/front-end/npm")
+    
+    // The Node.js project directory location
+    // This is where the package.json file and node_modules directory are located
+    // By default it is at the root of the current project
+    nodeProjectDir = file("${project.projectDir}/src/main/front-end")
+}
+
+task npmInstallDependencies(type: NpmTask){
+	dependsOn 'npmSetup'
+	execOverrides{
+		it.ignoreExitValue=true
+		it.workingDir = 'src/main/front-end'
+	}
+	args = ['install']
+}
+
+
+task npmBuild(type: NpmTask){
+	dependsOn 'npmInstallDependencies'
+	execOverrides{
+		it.workingDir = 'src/main/front-end'
+	}
+	args = ['run', 'build']
+}
+
+task copyFrontendToBuild(type:Copy){
+	dependsOn 'npmBuild'
+	from "${project.projectDir}/src/main/front-end/build/"
+	into "$buildDir/resources/main/static"
+}
+
+processResources{
+	dependsOn 'copyFrontendToBuild'
+}
+
 dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
