@@ -13,7 +13,7 @@ public class IndexController {
 	
 	@GetMapping("/")
 	public String defaultPage() {
-		return "Greetings Norayr, Astghik, Liana, Nina , Tatev, Shavarsh from Audio Streaming with Context";
+		return "Greetings Norayr, Astghik, Liana, Nina , Tatev, Shavarsh, Anna from Audio Streaming with Context";
 	}
 	
 	
