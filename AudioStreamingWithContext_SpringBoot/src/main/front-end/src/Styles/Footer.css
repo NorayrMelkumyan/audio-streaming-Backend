@@ -1,0 +1,75 @@
+/* @import "../constaat/constantsCSS.css"; */
+
+#footer {
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    display: block;
+    box-shadow: 0px -32px 100px rgba(175, 175, 175, 0.44);
+    position: absolute;
+    bottom: 0;
+    }
+    
+    .footer-top {
+        width: 100%;
+        display: flex;  
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .d-flex-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer_div {
+        width:33%;
+        height:inherit ;
+        padding: .5vw 3vw;
+        text-align: left;
+        align-items: flex-start;
+    }
+    #h4 {
+     
+        color: #444444CC;;
+        font-weight:700;
+    }
+    .p {
+        color: #444444CC;;
+        text-align: left;
+        font-size: 13px;
+        margin: 0 0 3px 0;
+    }
+    
+    #span {
+        color: #444444CC;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        font-weight:600;
+        display: block;
+    }
+    
+    #footer_bottom {
+        width: 100%;
+        height: auto;
+        padding: 0 3vw;
+        display: flex;
+    }
+    
+    #data {
+        width: 60%;
+        height: inherit;
+        padding-top: 30px;
+    }
+    
+    .gold_color {
+       width: 40%;
+       height:inherit;
+       text-align:right;
+        color: #444444CC;;
+    }
+    
+    a {
+        color: #444444CC;;
+    }

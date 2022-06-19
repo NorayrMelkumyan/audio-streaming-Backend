@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {useState} from "react";
+import Header from './Main/Header/Index';
+import UserPage from "./User page/IndexUserPage.js"
+import Footer from './Main/Footer';
+import './Styles/Header.css';
+import './Styles/App.css';
+import './Styles/Footer.css';
+import './Styles/Guest.css';
+import IndexGuest from "./Main/Guest/IndexGuest";
 
-function App() {
+
+function App(props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const LoggedIn = () => setIsLoggedIn(true);
+  const LoggedOut = () => setIsLoggedIn(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        { !isLoggedIn ?
+            <>
+              <Header  LoggedIn = { LoggedIn }  LoggedOut = { LoggedOut }/>
+                <IndexGuest/>
+            </>
+            :
+            <UserPage  LoggedOut = { LoggedOut } />
+        }
+        <Footer />
+      </div>
   );
 }
 
